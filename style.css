@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    font-family: 'Cousine';
+    box-sizing: border-box;
+}
+
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ddd;
+}
+
+.navbar {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 5px 0px rgba(191, 122, 122, 0.71);
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .nav-links a {
+    color: #ddd;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+    box-shadow: inset 0 -2px 0 #007bff;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: #66bfff;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 50px auto 0;
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .faq-item {
+    background-color: #2a2a2a;
+    border-color: #555;
+}
+
+.faq-question {
+    background: #f7f7f7;
+    color: #333;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.faq-question:hover {
+    background: #eaeaea;
+}
+
+body.dark-mode .faq-question {
+    background: #333;
+    color: #ddd;
+}
+
+body.dark-mode .faq-question:hover {
+    background: #555;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    color: #555;
+    background-color: #fff;
+    transition: max-height 0.3s ease, padding 0.3s ease, background-color 0.3s, color 0.3s;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 15px;
+}
+
+body.dark-mode .faq-answer {
+    background-color: #1e1e1e;
+    color: #ccc;
+}
+
+.faq-section {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .faq-section {
+    background-color: #1e1e1e;
+}
+
+.about-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .about-section {
+    background-color: #1e1e1e;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.dark-mode .about-text h2 {
+    color: #ddd;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+body.dark-mode .about-text p {
+    color: #ccc;
+}
+
+.about-image-container {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image {
+    max-width: 100%;
+    display: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.about-container.visible .about-image {
+    display: block;
+}
+
+.about-container.reverse {
+    flex-direction: row-reverse;
+}
+
+.about-image:hover {
+    transform: scale(1.2);
+}
+
+body.dark-mode .about-image {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 10);
+}
+
+.dark-mode-toggle {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 18px;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #555;
+    color: #ddd;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #777;
+}
+
+.button {
+    padding: 12px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+body.dark-mode .button {
+    background-color: #555;
+}
+
+body.dark-mode .button:hover {
+    background-color: #777;
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+#backToTop:hover {
+    background: #0056b3;
+}
+
+body.dark-mode #backToTop {
+    background: #555;
+}
+
+body.dark-mode #backToTop:hover {
+    background: #777;
+}
+
+.fullscreen-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#fullscreenOverlay img {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#fullscreenOverlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    animation: zoom 0.6s;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
