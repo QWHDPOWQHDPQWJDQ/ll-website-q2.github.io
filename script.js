@@ -1,9 +1,5 @@
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
-const backToTopButton = document.createElement('div');
-backToTopButton.id = 'backToTop';
-backToTopButton.innerText = '↑';
-document.body.appendChild(backToTopButton);
 
 if (localStorage.getItem('dark-mode') === 'enabled') {
     enableDarkMode();
@@ -22,13 +18,15 @@ darkModeToggle.addEventListener('click', () => {
 function enableDarkMode() {
     body.classList.add('dark-mode');
     localStorage.setItem('dark-mode', 'enabled');
-    darkModeToggle.innerHTML = '🌙';
+    const icon = darkModeToggle.querySelector('i');
+    icon.className = 'fas fa-moon';
 }
 
 function disableDarkMode() {
     body.classList.remove('dark-mode');
     localStorage.setItem('dark-mode', 'disabled');
-    darkModeToggle.innerHTML = '☀';
+    const icon = darkModeToggle.querySelector('i');
+    icon.className = 'fas fa-sun';
 }
 
 document.querySelectorAll('.faq-question').forEach(question => {
@@ -58,18 +56,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.about-container').forEach(container => {
     observer.observe(container);
-});
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-        backToTopButton.style.display = 'block';
-    } else {
-        backToTopButton.style.display = 'none';
-    }
-});
-
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 document.querySelectorAll('img').forEach(image => {
@@ -123,3 +109,25 @@ function openFullscreenImage(image) {
         }, 300);
     });
 }
+
+// Scroll Animation
+function handleScrollAnimation() {
+    const cards = document.querySelectorAll('.feature-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Initialize scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+    handleScrollAnimation();
+});
