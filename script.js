@@ -110,10 +110,9 @@ function openFullscreenImage(image) {
     });
 }
 
-// Scroll Animation
 function handleScrollAnimation() {
     const cards = document.querySelectorAll('.feature-card');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
