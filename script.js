@@ -29,6 +29,7 @@ function disableDarkMode() {
     icon.className = 'fas fa-sun';
 }
 
+// kinda removed the FAQ so this is useless, just reference it for future school work i guess
 document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
         const faqItem = question.parentElement;
@@ -54,9 +55,13 @@ const observer = new IntersectionObserver(entries => {
     threshold: 0.5
 });
 
+// animation
+
 document.querySelectorAll('.about-container').forEach(container => {
     observer.observe(container);
 });
+
+// scrolling for the carousel
 
 document.querySelectorAll('img').forEach(image => {
     image.style.cursor = 'pointer';
@@ -65,8 +70,11 @@ document.querySelectorAll('img').forEach(image => {
     });
 });
 
+
 function openFullscreenImage(image) {
     const fullscreenOverlay = document.createElement('div');
+
+    // change the css to get the full screen effect
     fullscreenOverlay.id = 'fullscreenOverlay';
     fullscreenOverlay.style.position = 'fixed';
     fullscreenOverlay.style.top = '0';
@@ -126,7 +134,6 @@ function handleScrollAnimation() {
     });
 }
 
-// Carousel functionality
 function initCarousel() {
     const carousel = document.querySelector('.carousel');
     if (!carousel) return;
@@ -155,7 +162,6 @@ function initCarousel() {
         showSlide(currentIndex);
     }
 
-    // Event listeners
     prevButton.addEventListener('click', prevSlide);
     nextButton.addEventListener('click', nextSlide);
 
@@ -166,17 +172,14 @@ function initCarousel() {
         });
     });
 
-    // Auto-advance slides every 5 seconds
+    // autoslides every 5 seconds
     let autoSlide = setInterval(nextSlide, 5000);
-
-    // Pause auto-advance when hovering over carousel
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
     carousel.addEventListener('mouseleave', () => {
         autoSlide = setInterval(nextSlide, 5000);
     });
 }
 
-// Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initCarousel();
     handleScrollAnimation();
