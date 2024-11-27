@@ -333,6 +333,71 @@ body.dark-mode .feature-card p {
     color: #f8f5f2;
 }
 
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    margin: 15px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card.expanded {
+    max-width: 600px;
+    flex: 2;
+}
+
+.feature-card .preview-text {
+    transition: opacity 0.3s ease;
+}
+
+.feature-card.expanded .preview-text {
+    opacity: 0;
+    height: 0;
+}
+
+.expanded-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    padding: 0 20px;
+}
+
+.feature-card.expanded .expanded-content {
+    max-height: 300px;
+    opacity: 1;
+    padding: 20px;
+}
+
+.expanded-content .button {
+    margin-top: 15px;
+    display: inline-block;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.2s;
+}
+
+.feature-card.expanded .expanded-content .button {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .section-title {
     text-align: center;
     margin-bottom: 50px;

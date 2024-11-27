@@ -70,7 +70,6 @@ document.querySelectorAll('img').forEach(image => {
     });
 });
 
-
 function openFullscreenImage(image) {
     const fullscreenOverlay = document.createElement('div');
 
@@ -118,6 +117,18 @@ function openFullscreenImage(image) {
     });
 }
 
+function toggleCard(card) {
+    // Remove expanded class from all other cards
+    document.querySelectorAll('.feature-card').forEach(otherCard => {
+        if (otherCard !== card) {
+            otherCard.classList.remove('expanded');
+        }
+    });
+    
+    // Toggle expanded class on clicked card
+    card.classList.toggle('expanded');
+}
+
 function handleScrollAnimation() {
     const cards = document.querySelectorAll('.feature-card');
     const observer = new IntersectionObserver((entries) => {
@@ -129,6 +140,9 @@ function handleScrollAnimation() {
     }, { threshold: 0.1 });
     cards.forEach(card => {
         observer.observe(card);
+        card.addEventListener('click', () => {
+            toggleCard(card);
+        });
     });
 }
 
