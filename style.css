@@ -142,6 +142,7 @@ body.dark-mode .nav-links a:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 300px;
 }
 
 .button.youtube:hover {
