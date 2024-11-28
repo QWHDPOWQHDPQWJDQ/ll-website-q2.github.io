@@ -1,34 +1,3 @@
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-if (localStorage.getItem('dark-mode') === 'enabled') {
-    enableDarkMode();
-} else {
-    disableDarkMode();
-}
-
-darkModeToggle.addEventListener('click', () => {
-    if (body.classList.contains('dark-mode')) {
-        disableDarkMode();
-    } else {
-        enableDarkMode();
-    }
-});
-
-function enableDarkMode() {
-    body.classList.add('dark-mode');
-    localStorage.setItem('dark-mode', 'enabled');
-    const icon = darkModeToggle.querySelector('i');
-    icon.className = 'fas fa-moon';
-}
-
-function disableDarkMode() {
-    body.classList.remove('dark-mode');
-    localStorage.setItem('dark-mode', 'disabled');
-    const icon = darkModeToggle.querySelector('i');
-    icon.className = 'fas fa-sun';
-}
-
 // kinda removed the FAQ so this is useless, just reference it for future school work i guess
 document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
