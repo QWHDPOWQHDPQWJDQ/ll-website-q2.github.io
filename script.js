@@ -1,3 +1,5 @@
+// some basic JavaScript for the website, ask me if u have questions
+
 // kinda removed the FAQ so this is useless, just reference it for future school work i guess
 document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', () => {
@@ -153,11 +155,11 @@ function initCarousel() {
         });
     });
 
-    // autoslides every 5 seconds
-    let autoSlide = setInterval(nextSlide, 5000);
+    // autoslides every 10 seconds
+    let autoSlide = setInterval(nextSlide, 10000);
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlide));
     carousel.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(nextSlide, 5000);
+        autoSlide = setInterval(nextSlide, 10000);
     });
 }
 
