@@ -1,6 +1,4 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Remove loader when page is loaded
     const loaderWrapper = document.querySelector('.loader-wrapper');
     window.addEventListener('load', function() {
         setTimeout(function() {
@@ -10,16 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         }, 1000);
     });
-
-    // Mobile menu toggle
     const mobileMenu = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     
     mobileMenu.addEventListener('click', function() {
         this.classList.toggle('active');
         navMenu.classList.toggle('active');
-        
-        // Animate hamburger menu
         const bars = this.querySelectorAll('.bar');
         if (this.classList.contains('active')) {
             bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
@@ -31,15 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
             bars[2].style.transform = 'rotate(0) translate(0)';
         }
     });
-
-    // Close mobile menu when clicking on a nav link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             mobileMenu.classList.remove('active');
-            
-            // Reset hamburger menu
             const bars = mobileMenu.querySelectorAll('.bar');
             bars[0].style.transform = 'rotate(0) translate(0)';
             bars[1].style.opacity = '1';
@@ -47,26 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Header scroll effect
     const header = document.querySelector('header');
     const backToTop = document.getElementById('backToTop');
     
     window.addEventListener('scroll', function() {
-        // Header effect
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
         
-        // Back to top button visibility
         if (window.scrollY > 500) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
         }
         
-        // Activate nav link based on scroll position
         const sections = document.querySelectorAll('section');
         let current = '';
         
@@ -86,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -104,13 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form submission handling
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simple validation
             let isValid = true;
             const inputs = this.querySelectorAll('input, textarea');
             
@@ -119,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     isValid = false;
                     input.style.borderColor = 'red';
                     
-                    // Reset border after 3 seconds
                     setTimeout(() => {
                         input.style.borderColor = '';
                     }, 3000);
@@ -128,19 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!isValid) return;
             
-            // Simulate form submission
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
-            // Simulate API call
             setTimeout(() => {
-                // Reset form
                 this.reset();
-                
-                // Show success message
                 const successMessage = document.createElement('div');
                 successMessage.className = 'success-message';
                 successMessage.textContent = form.closest('section').id === 'contact' 
@@ -152,11 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 form.appendChild(successMessage);
                 
-                // Reset button
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
                 
-                // Remove success message after 5 seconds
                 setTimeout(() => {
                     successMessage.remove();
                 }, 5000);
@@ -164,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add animation on scroll
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('[data-aos]');
         
@@ -204,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Initialize AOS elements
     const initAOS = function() {
         const elements = document.querySelectorAll('[data-aos]');
         
@@ -236,17 +209,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Trigger animation for elements in view on load
         animateOnScroll();
     };
 
-    // Initialize AOS
     initAOS();
     
-    // Listen for scroll to trigger animations
     window.addEventListener('scroll', animateOnScroll);
     
-    // Product hover effect
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -260,9 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Create placeholder images for demo
     const createPlaceholderImages = function() {
-        // Create a function to generate colored rectangles as SVG data URLs
         const generateColoredRect = function(width, height, color, text) {
             const svg = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
@@ -273,13 +240,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
         };
 
-        // Hero laptop image
         const heroLaptopImg = document.querySelector('.hero-image img');
         if (heroLaptopImg && heroLaptopImg.src.includes('hero-laptop.png')) {
             heroLaptopImg.src = generateColoredRect(600, 400, '#3498db', '8Tech Premium Laptop');
         }
         
-        // Product images
         const productImages = document.querySelectorAll('.product-image img');
         productImages.forEach((img, index) => {
             const models = ['Pro', 'Air', 'Studio'];
@@ -289,13 +254,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Tech specs image
         const techSpecsImg = document.querySelector('.tech-image img');
         if (techSpecsImg && techSpecsImg.src.includes('tech-specs.png')) {
             techSpecsImg.src = generateColoredRect(500, 400, '#3498db', '8Tech Technology');
         }
         
-        // User testimonial images
         const userImages = document.querySelectorAll('.testimonial-author img');
         userImages.forEach((img, index) => {
             if (img.src.includes('user')) {
@@ -304,10 +267,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    // Call the function to create placeholder images
     createPlaceholderImages();
 
-    // Image Carousel
     const carousel = document.getElementById('laptopCarousel');
     if (carousel) {
         const container = carousel.querySelector('.carousel-container');
@@ -319,10 +280,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentIndex = 0;
         const slideCount = slides.length;
         
-        // Initialize carousel
         updateCarousel();
         
-        // Set up event listeners
         prevBtn.addEventListener('click', function() {
             currentIndex = (currentIndex - 1 + slideCount) % slideCount;
             updateCarousel();
@@ -333,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCarousel();
         });
         
-        // Add click events to dots
         dots.forEach(dot => {
             dot.addEventListener('click', function() {
                 currentIndex = parseInt(this.getAttribute('data-index'));
@@ -341,13 +299,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Auto slide every 5 seconds
         let autoSlide = setInterval(function() {
             currentIndex = (currentIndex + 1) % slideCount;
             updateCarousel();
         }, 5000);
         
-        // Pause auto slide when interacting with carousel
         carousel.addEventListener('mouseenter', function() {
             clearInterval(autoSlide);
         });
@@ -359,11 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
         });
         
-        // Update carousel display
         function updateCarousel() {
             container.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // Update dots
             dots.forEach((dot, index) => {
                 if (index === currentIndex) {
                     dot.classList.add('active');
@@ -373,4 +327,71 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    const lightbox = document.getElementById('analyticsLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    const analyticsCards = document.querySelectorAll('.analytics-card');
+    
+    let currentImageIndex = 0;
+    const totalImages = analyticsCards.length;
+    analyticsCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            const imageCaption = this.getAttribute('data-caption');
+            
+            lightboxImage.src = imageSrc;
+            lightboxCaption.textContent = imageCaption;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+            
+            currentImageIndex = index;
+        });
+    });
+    
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target === lightboxImage) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    lightboxPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+        updateLightboxImage();
+    });
+    
+    lightboxNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex + 1) % totalImages;
+        updateLightboxImage();
+    });
+    
+    function updateLightboxImage() {
+        const card = analyticsCards[currentImageIndex];
+        const imageSrc = card.getAttribute('data-image');
+        const imageCaption = card.getAttribute('data-caption');
+        
+        lightboxImage.src = imageSrc;
+        lightboxCaption.textContent = imageCaption;
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            updateLightboxImage();
+        } else if (e.key === 'ArrowRight') {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            updateLightboxImage();
+        }
+    });
 });
